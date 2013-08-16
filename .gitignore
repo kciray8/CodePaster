@@ -1,0 +1,22 @@
+.obj
+*.moc
+Makefile*
+*.dylib
+*.so.*
+*.so
+*.so.debug
+*.o
+moc_*.cpp
+*.Debug
+*.Release
+ui_*
+*.exe
+debug/*
+
+#QtCreator project files
+*.pro.user
+=======
+*.pro.user*
+*~
+*.bat
+*.xml

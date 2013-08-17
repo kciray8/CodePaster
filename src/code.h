@@ -29,9 +29,9 @@ class Code {
     QString m_keywords;
     QString m_text;
     int m_lenght;
-    int m_id = -1;
-    qint64 m_createTime = -1;//In ms
-    int m_copyCounter = 0;
+    int m_id;
+    qint64 m_createTime;//In ms
+    int m_copyCounter;
 public:
     Code(QString m_html, QString m_keywords);
     Code();

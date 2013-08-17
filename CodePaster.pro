@@ -1,9 +1,9 @@
-QT       += core gui xml
+QT       += core gui xml gui-private
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CodePaster
 TEMPLATE = app
-QMAKE_CXXFLAGS += -std=gnu++11
+QMAKE_CXXFLAGS += -std=c++0x
 
 RESOURCES = images.qrc
 
@@ -24,8 +24,17 @@ HEADERS  += \
     src/codeeditor.h \
     src/codebase.h \
     src/code.h \
-
-win32{
+win32
+{
     RC_FILE += res.rc
     OTHER_FILES += res.rc
 }
+
+# Qxt
+!macx:SOURCES += src/qxtglobalshortcut/qxtglobalshortcut.cpp
+!macx:HEADERS += \
+    src/qxtglobalshortcut/qxtglobalshortcut.h \
+    src/qxtglobalshortcut/qxtglobal.h
+win32:SOURCES += src/qxtglobalshortcut/qxtglobalshortcut_win.cpp
+unix:!macx:SOURCES += src/qxtglobalshortcut/qxtglobalshortcut_x11.cpp
+unix:!macx:LIBS += -lX11

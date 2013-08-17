@@ -27,10 +27,13 @@
 #include <QSystemTrayIcon>
 #include <QSettings>
 
+#include <contrib/utils/uglobalhotkeys.h>
+
 class CodePaster : public QWidget {
     Q_OBJECT
     enum {COPY, PASTE};
     QSystemTrayIcon m_tray;
+    UGlobalHotkeys Hotkeys;
     QTimer autoSaveTimer;
     QString m_basePath;
     
@@ -39,7 +42,6 @@ public:
     CodePaster();
     ~CodePaster();
 
-    virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result);
     void saveStrInFile(QString &str, QString filePatch);
     void saveInFile(QString filePatch);
     void load();
@@ -47,6 +49,7 @@ public slots:
     void exit();
     void save();
 private slots:
+    void onHotkeyActivated(size_t id);
     void onAddSnippet();
     void onSearch();
     void autoSave();

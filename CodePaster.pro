@@ -15,6 +15,13 @@ SOURCES += src/main.cpp\
     src/codeeditor.cpp \
     src/codebase.cpp \
     src/code.cpp \
+    contrib/utils/usettings.cpp \
+    contrib/utils/ukeysequence.cpp \
+    contrib/utils/uglobalhotkeys.cpp \
+    contrib/utils/ufullscreenwrapper.cpp \
+    contrib/utils/uexception.cpp \
+    contrib/utils/ucolonsep.cpp \
+    contrib/utils/ucast.cpp
 
 HEADERS  += \
     src/searchwindow.h \
@@ -24,6 +31,15 @@ HEADERS  += \
     src/codeeditor.h \
     src/codebase.h \
     src/code.h \
+    contrib/utils/usettings.h \
+    contrib/utils/ukeysequence.h \
+    contrib/utils/uglobalhotkeys.h \
+    contrib/utils/ufullscreenwrapper.h \
+    contrib/utils/uexception.h \
+    contrib/utils/udebug.h \
+    contrib/utils/ucolonsep.h \
+    contrib/utils/ucast.h \
+    contrib/utils/hotkeymap.h
 
 win32{
     RC_FILE += res.rc

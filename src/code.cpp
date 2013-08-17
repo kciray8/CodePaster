@@ -29,6 +29,9 @@ Code::Code(QString html, QString keywords): m_html(html), m_keywords(keywords)
 
 Code::Code()
 {
+    m_id = -1;
+    m_createTime = -1;
+    m_copyCounter = 0;
 }
 
 void Code::setTextFromHTML(QString html)

@@ -26,6 +26,7 @@
 #include <QtCore>
 #include <QSystemTrayIcon>
 #include <QSettings>
+#include "qxtglobalshortcut/qxtglobalshortcut.h"
 
 class CodePaster : public QWidget {
     Q_OBJECT
@@ -39,7 +40,6 @@ public:
     CodePaster();
     ~CodePaster();
 
-    virtual bool nativeEvent(const QByteArray &eventType, void *message, long *result);
     void saveStrInFile(QString &str, QString filePatch);
     void saveInFile(QString filePatch);
     void load();
@@ -50,6 +50,9 @@ private slots:
     void onAddSnippet();
     void onSearch();
     void autoSave();
+private:
+    QxtGlobalShortcut *copy;
+    QxtGlobalShortcut *paste;
 };
 
 #endif // CODEPASTER_H

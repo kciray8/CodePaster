@@ -22,7 +22,7 @@
 #include "codepaster.h"
 #include "codeeditorwindow.h"
 #include "searchwindow.h"
-#include <windows.h>
+//#include <windows.h>
 #include <QtCore>
 #include "codebase.h"
 
@@ -33,10 +33,12 @@ CodePaster::CodePaster():
    // m_settings(QSettings::IniFormat, QSettings::UserScope,"KciRay", "CodePaster")
   m_settings(QApplication::applicationDirPath()+"/config.ini", QSettings::IniFormat)
 {
-#ifdef Q_OS_WIN
-    RegisterHotKey((HWND)winId(), COPY,  MOD_CONTROL, 0x44);
-    RegisterHotKey((HWND)winId(), PASTE, MOD_WIN, 0x56);
-#endif
+    copy = new QxtGlobalShortcut(QKeySequence("Ctrl+D"));
+    paste = new QxtGlobalShortcut(QKeySequence("Meta+V"));
+
+    connect(copy, SIGNAL(activated()), this, SLOT(onAddSnippet()));
+    connect(paste, SIGNAL(activated()), this, SLOT(onSearch()));
+
     m_tray.setIcon(QIcon(":/images/tray.png"));
     if(m_settings.value("basePath").isValid()){
         m_basePath = m_settings.value("basePath").toString();
@@ -120,25 +122,6 @@ void CodePaster::exit()
 void CodePaster::save()
 {
     saveInFile(m_basePath);
-}
-
-bool CodePaster::nativeEvent(const QByteArray &eventType, void *message, long *result)
-{
-    Q_UNUSED(eventType)
-    Q_UNUSED(result)
-    MSG *msg = reinterpret_cast<MSG *>(message);
-
-    if (msg->message == WM_HOTKEY) {
-        if (msg->wParam == COPY) {
-            onAddSnippet();
-        }
-
-        if (msg->wParam == PASTE) {
-            onSearch();
-        }
-    }
-
-    return false;
 }
 
 void CodePaster::onAddSnippet()

@@ -2,7 +2,7 @@
 **
 ** CodePaster is program to simple and quick copy/paste snippets of code and organize it
 ** Copyright (C) 2013 Yaroslaw Baranow(aka KciRay).
-** Contact: Yaroslaw Baranow (kciray8@gmail.com)
+** Contact: Yaroslaw (kciray8@gmail.com)
 **
 ** This program is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
